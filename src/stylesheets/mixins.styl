@@ -1,0 +1,66 @@
+// to prevent applying both "up" and "down" media queries
+// when device width is equal to exact max-width && min-width value
+// https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// (keep in mind that solution from CSS spec is not yet widely supported)
+// 0.02px offset is a solution from Bootstrap 4
+
+$upperBoundOffset = 0.02
+$phoneMax         = 576px
+$tablet           = 768px
+$tabletLandscape  = 1024px
+$desktop          = 1200px
+$desktopBig       = 1800px
+$smStart          = 575px
+
+truncate()
+  white-space nowrap
+  overflow hidden
+  -ms-text-overflow ellipsis
+  text-overflow ellipsis
+
+strikethrough()
+  position absolute
+  content ''
+  top: 50%
+  left: 0
+  display: inline-block
+  width: 100%
+  height: 1px
+  background-color $grey-3
+  transform: rotate(170deg)
+
+media-phone-up()
+  @media all and (max-width: $phoneMax )
+    {block}
+
+media-phone-only()
+  @media all and (max-width: $phoneMax - $upperBoundOffset)
+    {block}
+
+media-tablet-up()
+  @media all and (max-width: $tablet)
+    {block}
+
+media-tablet-down()
+  @media all and (max-width: $tablet - $upperBoundOffset)
+    {block}
+
+media-tablet-landscape-up()
+  @media all and (max-width: $tabletLandscape)
+    {block}
+
+media-tablet-landscape-down()
+  @media all and (max-width: $tabletLandscape - $upperBoundOffset)
+    {block}
+
+media-desktop-up()
+  @media all and (max-width: $desktop)
+    {block}
+
+media-desktop-down()
+  @media all and (max-width: $desktop - $upperBoundOffset)
+    {block}
+
+media-big-desktop-up()
+  @media all and (max-width: $desktopBig)
+    {block}

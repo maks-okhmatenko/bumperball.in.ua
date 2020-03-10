@@ -1,0 +1,42 @@
+.emotions
+  position: relative
+  overflow: hidden
+
+
+  &-title,
+  &-description
+    color: #C48233
+    text-transform: uppercase
+
+  &-title
+    font-size: 40px
+    +media-tablet-up()
+      font-size: 30px
+
+
+  &-description
+    font-size: 25px
+    +media-tablet-up()
+      font-size: 20px
+
+    hr
+      position: absolute
+      width: 100vw
+      border-top: 2px solid #c48233
+      margin: 0
+      z-index: -1
+
+  &-wrap
+    padding-bottom: 65px
+    max-width: 700px
+
+  &-top
+    padding-top: 65px
+
+  &-bottom
+    margin-top: 40px
+
+    .text
+      font-size: 18px
+      color: #000
+

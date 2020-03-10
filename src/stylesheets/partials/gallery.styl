@@ -1,0 +1,24 @@
+.gallery
+  position: relative
+  min-height: 1000px
+  background-image: url('../images/gallery-bg.jpg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  z-index: 1
+
+  .heading-title
+    text-transform: uppercase
+    font-size: 45px
+    color: #FFFFFF
+
+.gallery::before
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  display: block
+  content: ''
+  background-color: rgba(#000, 70%)
+  z-index: -1

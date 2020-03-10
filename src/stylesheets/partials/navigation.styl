@@ -1,0 +1,31 @@
+.navigation
+  display: flex
+  flex-direction: row
+  align-items center
+
+  &-link
+    position: relative
+    margin-right: 28px
+    font-size: 14px
+    color: #ffffff
+    border-bottom: 2px solid transparent
+    transition: all .3s ease-in-out
+
+    &:last-child
+      margin-right: 0
+
+      &:after
+        display: none
+
+    &:after
+      position: absolute
+      content: ''
+      top: 10px
+      right: -20px
+      width: 10px
+      height: 1px
+      background-color: #ffffff
+      transform: rotate(-60deg)
+
+    &:hover
+      border-bottom-color: #c48233

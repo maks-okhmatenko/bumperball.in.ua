@@ -1,0 +1,36 @@
+.facts
+  background-color: #FFF
+  min-height: 1000px
+  +media-tablet-up()
+    min-height: auto
+
+  .heading-title
+    color: #000!important
+
+  .facts-list
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-between
+    flex-wrap: wrap
+    +media-tablet-landscape-up()
+      justify-content: space-around
+
+.fact
+  display: flex
+  flex-direction: column
+  align-items: center
+  +media-tablet-landscape-up()
+    margin-right: 30px
+    margin-bottom: 30px
+
+  &-value
+    color: #0060FF
+    text-transform: uppercase
+    font-size: 50px
+
+  &-text
+    text-align: center
+    font-size: 16px
+    color: #000
+

@@ -1,0 +1,38 @@
+.steps
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  flex-wrap: wrap
+  +media-desktop-up()
+    justify-content: space-around
+
+.step
+  width: 200px
+  text-align: center
+  +media-desktop-up()
+    margin-bottom: 30px
+
+  &-img
+    position: relative
+    display: inline-block
+    +media-desktop-up()
+      &:after
+        display: none
+
+    &:after
+      position: absolute
+      content: ''
+      top: 50%
+      right: -186px
+      transform: translateX(-50%)
+      width: 100%
+      border: 2px dashed #36a7da
+
+  &:last-child
+    .step-img
+      &:after
+        display: none
+
+  &-text
+    margin-top: 30px
+    font-size: 16px

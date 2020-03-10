@@ -1,0 +1,96 @@
+.intro
+  height: 100vh
+  min-height: 700px
+  position: relative
+  background-image: url('../images/intro-bg.jpg')
+  background-position: top center
+  background-repeat: no-repeat
+  background-size: cover
+  z-index: 0
+  display: flex
+  flex-direction: column
+
+  .man
+    position:absolute
+    bottom: 90px
+    right: 70px
+    z-index: 2
+    transform: translateY(100%)
+
+    +media-desktop-up()
+      width: 400px
+      top: -70px
+      right: 20px
+    +media-tablet-landscape-up()
+      width: 250px
+    +media-tablet-up()
+      display: none
+
+  .man-img
+    display: block
+
+
+.intro::after
+  content: ''
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  background-color: rgba(#000000, 80%)
+  z-index: 1
+
+.intro-top
+  margin-top: 60px
+  position: absolute
+  top: calc(50% - 95px)
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 2
+
+  //+media-phone-up()
+  //  top: calc(50% - 55px)
+
+  .intro-title
+    font-size: 60px
+    color: #FFFFFF
+    +media-tablet-up()
+      font-size: 50px
+
+  .intro-description
+    display: block
+    font-size: 30px
+    color: #F9A53B
+    +media-tablet-up()
+      font-size: 25px
+
+  .intro-title,
+  .intro-description
+    text-align: center
+    text-transform: uppercase
+
+.intro-bottom
+  height: 190px
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  z-index: 2
+  background-color: #1799D4
+  box-sizing: border-box
+  padding: 40px 0 50px 0
+  box-shadow: -1px 1px 7px 3px rgba(23,153,212,0.75)
+  +media-phone-up()
+    padding: 20px 0 30px 0
+
+.intro-descr
+  max-width: 930px
+  margin: 0 auto
+
+  .text
+    color: #FFFFFF
+    font-size: 16px
+    text-align: center
+    +media-phone-up()
+      font-size: 14px
+
