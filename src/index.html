@@ -472,7 +472,7 @@
     <div class="request">
       <span class="request-title">Оставьте заявку на бесплатную консультацию</span>
       <div class="request-wrap">
-        <form action="#" class="request-form" id="feedback-form">
+        <form action="#" class="request-form" id="feedback-form" method="POST">
           <div class="form-container">
             <div class="request-el">
               <label>
@@ -504,8 +504,8 @@
 
             <div class="select">
               <label>
-                <select name="format">
-                  <option value="Что вас интересует?" disabled>Выберите формат игры</option>
+                <select name="format" class='request-input'>
+                  <option value="Что вас интыересует?" disabled>Выберите формат игры</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                 </select>
