@@ -1,4 +1,5 @@
 .request
+  position relative
   padding: 60px 90px
   text-align: center
   border: 1px solid #ffffff
@@ -67,3 +68,57 @@
 
   .request-action
     margin-top: 40px
+
+
+//onclick stylesheet
+
+.form-result 
+  background-color: #1c1c1c
+  padding-top: 110px
+  text-align: center
+  font-size: 18px
+  color: #c48233
+  box-shadow: 1px 2px 5px #ebebeb
+  position: absolute
+  width: 85%
+  height: 28%
+  border-radius: 5px;
+  opacity: 0
+
+
+.form-result.active 
+  top: 15%;
+  opacity: 1;
+
+.form-error
+  background-color: #1c1c1c
+  padding-top: 110px
+  text-align: center
+  font-size: 18px
+  color: #c48233
+  box-shadow: 1px 2px 5px #ebebeb
+  position: absolute
+  width: 85%
+  height: 28%
+  border-radius: 5px;
+  opacity: 0
+
+.form-error.active
+  top: 15%;
+  opacity: 1;
+
+.preloader 
+  display: none
+  position: absolute
+  top: 50%
+  left: 45%
+  margin-top: -20%
+
+.preloader.active
+  display: block
+
+.error
+  display: block
+
+.success
+  display: block
