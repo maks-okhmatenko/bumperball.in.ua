@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'slick-carousel';
 import 'jquery-mask-plugin';
+import { FORM_URL } from './environment';
 
 window.jQuery = $;
 window.$ = $;
@@ -51,7 +52,7 @@ function submitForm(event) {
   const request = new XMLHttpRequest();
   //const formDataJson = JSON.stringify(Object.fromEntries(formData));
 
-  request.open('POST', 'http://localhost:8888/form/form.php');
+  request.open('POST', FORM_URL);
   request.setRequestHeader('Content-Type', 'application/json, charset=utf-8');
 
   request.onload = function() {
@@ -103,7 +104,6 @@ function initFormEvents() {
 }
 
 $(document).ready(() => {
-  console.log('123');
   initNavEvents();
   initSlideEvents();
   initFormEvents();
