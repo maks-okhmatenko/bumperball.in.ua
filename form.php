@@ -19,7 +19,7 @@ function json_response($code = 200, $message = null){
     header('Access-Control-Max-Age: 1728000');
     header('Content-Length: 0');
     header('Content-Type: application/json; charset=utf-8');
-    header('Access-Control-Allow-Origin: http://localhost:8000');
+    header('Access-Control-Allow-Origin: https://trusting-boyd-2af93b.netlify.com/');
 
     return json_encode(array(
         'status' => $code < 300, // success or not?
