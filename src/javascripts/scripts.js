@@ -1,10 +1,15 @@
 import $ from 'jquery';
 import 'slick-carousel';
 import 'jquery-mask-plugin';
+
 import { FORM_URL } from './environment';
+import initGallery from './init_gallery';
+import initFeedbacks from './init_feedback';
+import messages from './messages';
 
 window.jQuery = $;
 window.$ = $;
+
 
 function initNavEvents() {
   const $hamburgerBtn = $('#hamburger');
@@ -28,87 +33,124 @@ function initNavEvents() {
   });
 }
 
-function initSlideEvents() {
-  const $slick = $('.slider');
-
-  $slick.slick({
-    dots: true,
-    infinity: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    prevArrow: '<span class="btn-prev"></span>',
-    nextArrow: '<span class="btn-next"></span>',
-  });
-};
-// Form
-function submitForm(event) {
-  event.preventDefault();
-
-  const form = document.querySelector('#feedback-form');
-  const input = document.getElementsByClassName('request-input');
-  const formData = new FormData(form);
-  const request = new XMLHttpRequest();
-  //const formDataJson = JSON.stringify(Object.fromEntries(formData));
-
-  request.open('POST', FORM_URL);
-  request.setRequestHeader('Content-Type', 'application/json, charset=utf-8');
-
-  request.onload = function() {
-    hideLoader();
-    showMessage('success');
-  }
-
-  request.onerror = function() {
-    hideLoader();
-    showMessage('error');
-  }
-
-  showLoader();
-  request.send(formData);
-};
-
-let formError = document.querySelector('.form-error');
-let formResult = document.querySelector('.form-result');
-let preloader = document.querySelector('.preloader');
-  
+// const formError = document.querySelector('.form-error');
+// const formResult = document.querySelector('.form-result');
+// const preloader = document.querySelector('.preloader');
+const loader = document.querySelector('.request-btn');
 
 function showLoader() {
-  preloader.classList.add('active')
+  loader.classList.add('active');
+  // preloader.classList.add('active');
 }
 
 function hideLoader() {
-  preloader.classList.remove('active')
+  loader.classList.remove('active');
+  // preloader.classList.remove('active');
 }
 
-function showMessage(messageType = 'success') {
-  if (messageType === 'success') {
-    formResult.classList.add('active');
-  } else {
-    formError.classList.add('active');
+// function showMessage(messageType = 'success') {
+//   if (messageType === 'success') {
+//     formResult.classList.add('active');
+//   } else {
+//     formError.classList.add('active');
+//   }
+// }
+
+// function hideMessage() {
+//   formResult.classList.remove('active');
+//   formError.classList.remove('active');
+// }
+
+function validateForm(formJson) {
+  const $inputs = $('.request-input');
+  const formConfig = {
+    name: {
+      // required: true,
+    },
+    phone: {
+      // required: true,
+      // regex: /((\+38)?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))/i,
+    },
+    email: {
+      // required: true,
+      // regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i,
+    },
+    format: {
+      // required: false,
+    },
+  };
+
+  console.log($inputs);
+  console.log(formJson);
+
+  return !$inputs.toArray().map((input) => {
+    const { name } = input;
+    const config = formConfig[name];
+    if (config && (
+      !input.value && config.required
+      || config.regex && !config.regex.test(input.value)
+    )) {
+      $(input).addClass('invalid');
+      return true;
+    }
+    return false;
+  }).reduce((acc, it) => acc || it);
+}
+
+// Form
+function submitForm(event) {
+  const { requests } = messages;
+
+  const form = document.querySelector('#feedback-form');
+  const formData = new FormData(form);
+  const formDataJson = JSON.stringify(Object.fromEntries(formData));
+
+  if (!validateForm(formDataJson)) {
+    event.preventDefault();
+    return;
   }
-}
 
-function hideMessage() {
-  formResult.classList.remove('active');
-  formError.classList.remove('active');
+  // $('#request').addClass('done');
+  $('#request .request-title').html('<span class="loading-icon"></span>');
+
+  const request = new XMLHttpRequest();
+  request.open('POST', FORM_URL);
+  request.setRequestHeader('Content-Type', 'application/json, charset=utf-8');
+
+  request.onload = (data) => {
+    hideLoader();
+    console.log(data);
+    $('#request .request-title').html(requests.success);
+    // showMessage('success');
+  };
+
+  request.onerror = () => {
+    hideLoader();
+    $('#request .request-title').html(requests.error);
+    // showMessage('error');
+  };
+  showLoader();
+  // request.send(formDataJson);
 }
 
 function initFormEvents() {
   const $form = $('#feedback-form');
   const $phone = $('#phone-field');
+  const $inputs = $('.request-input');
 
-  $phone.mask('+( 000 ) 00 000 0000');
+  $phone.mask('+38(000)000-00-00');
   $form.submit(submitForm);
+
+  $inputs.on('input', (event) => { $(event.target).removeClass('invalid'); });
 }
 
 $(document).ready(() => {
   initNavEvents();
-  initSlideEvents();
   initFormEvents();
+  initFeedbacks();
+  initGallery();
 
-  document.addEventListener('click', function() {
-    hideMessage();
+  document.addEventListener('click', () => {
+    // hideMessage();
   });
 });
