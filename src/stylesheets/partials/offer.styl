@@ -15,23 +15,30 @@
   &-list
     display: flex
     flex-direction: row
-    justify-content: space-around
-    +media-tablet-up()
-      flex-direction: column
+    justify-content: space-between
+    overflow-x: auto
+    min-width: 100%
+    -ms-overflow-x-style: none;
+    &::-webkit-scrollbar
+      display: none
 
 .offer
+  &-card
+    width: 440px
+    min-width: 440px
+    +media-tablet-up()
+      min-width: 100%
+      width: 100%
+
+  margin: 20px
   position: relative
   padding: 40px 30px
-  width: 330px
   min-height: 590px
   color: #ffffff
   background-color: #0d0d0d
   border-radius: 10px
   box-shadow: 0 1px 5px 5px rgba(33,61,72,0.75)
   box-sizing border-box
-  +media-tablet-up()
-    width: 100%
-    margin-bottom: 20px
 
   &-title
     display: block
