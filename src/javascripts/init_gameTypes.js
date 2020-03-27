@@ -16,7 +16,7 @@ function initGameTypes() {
 				<span class="type-title">${TITLE}</span>
 				<p class="type-text">${DESCRIPTION}</p>
 				<div class="type-button-wrap">
-					<button class="type-button">Заказать ${TITLE}</button>
+					<a class="type-button" href="#contacts">Заказать ${TITLE}</a>
 				</div>
 			</div>
 		</div>

@@ -25,7 +25,7 @@ function initOffers() {
 						${SERVICE.ITEMS.map((item) => `<span class="items-item">${item}</span>`).join('')}
 					</div>
 					<div class="offer-button-wrap">
-						<button class="offer-button">Заказать ${TITLE}</button>
+						<a class="offer-button" href="#contacts">Заказать ${TITLE}</a>
 					</div>
 				</div>
 			</div>
