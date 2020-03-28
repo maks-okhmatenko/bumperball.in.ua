@@ -1,11 +1,18 @@
 .gallery
   position: relative
-  min-height: 1000px
+  // min-height: 900px
   background-image: url('../images/gallery-bg.jpg')
   background-repeat: no-repeat
   background-position: center
   background-size: cover
   z-index: 1
+  min-height: 800px
+
+  +media-tablet-up()
+    min-height: 800px
+
+  +media-phone-up()
+    min-height: 600px
 
   .heading-title
     text-transform: uppercase

@@ -1,11 +1,12 @@
 /* eslint-disable no-tabs */
 import $ from 'jquery';
-import feedbackList from './feedbacks';
+
+const { FEEDBAKS } = CUSTOM_MESSAGES;
 
 function initFeedback() {
   const $feedbacks = $('.feedback-list');
 
-  feedbackList.map(({
+  FEEDBAKS.map(({
     city, name, avatarLink, feedback, socialMedia,
   }) => {
     $feedbacks.append(`

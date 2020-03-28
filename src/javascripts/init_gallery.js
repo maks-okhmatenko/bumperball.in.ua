@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
-
+import { ROOT_URL, GALLERY_URL } from './environment';
 
 function initSlideEvents() {
   const $slick = $('.slider');
@@ -18,25 +18,23 @@ function initSlideEvents() {
 }
 
 function loadImages() {
-  const folder = '/images/gallery';
   const $gallery = $('#gallery .slider');
 
   $.ajax({
-    url: folder,
+    url: GALLERY_URL,
     success(data) {
-      $(data).find('a').attr('href', (i, val) => {
-        if (val.match(/\.(jpe?g|png|gif)$/)) {
-          $gallery.append(`
-              <div class="slider__el">
-                <img class="img" src="${val}" alt="Slide">
-              </div>
-            `);
-        }
+      const fileLinks = JSON.parse(data.message);
+      fileLinks.map((it) => {
+        $gallery.append(`
+          <div class="slider__el">
+            <img class="img" src="${ROOT_URL}/${it}" alt="Slide">
+          </div>
+        `);
       });
-      // init slick
+
       initSlideEvents();
     },
   });
 }
 
-export default loadImages();
+export default loadImages;
