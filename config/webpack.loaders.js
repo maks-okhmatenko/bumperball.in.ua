@@ -27,7 +27,7 @@ const js = {
       options: {
         presets: ['@babel/preset-env'],
       },
-    }
+    },
   ],
 };
 

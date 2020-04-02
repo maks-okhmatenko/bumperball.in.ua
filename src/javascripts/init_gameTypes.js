@@ -1,4 +1,5 @@
 /* eslint-disable no-tabs */
+/* global CUSTOM_MESSAGES */
 import $ from 'jquery';
 
 const { GAME_TYPES } = CUSTOM_MESSAGES;

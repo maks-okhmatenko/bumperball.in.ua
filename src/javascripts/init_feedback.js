@@ -1,18 +1,19 @@
 /* eslint-disable no-tabs */
+/* global CUSTOM_MESSAGES */
 import $ from 'jquery';
 
-const { FEEDBAKS } = CUSTOM_MESSAGES;
+const { FEEDBACK } = CUSTOM_MESSAGES;
 
 function initFeedback() {
   const $feedbacks = $('.feedback-list');
 
-  FEEDBAKS.map(({
+  FEEDBACK.forEach(({
     city, name, avatarLink, feedback, socialMedia,
   }) => {
     $feedbacks.append(`
 			<div class="feedback-item">
 				<div class="feedback-image">
-					<img src="images/avatars/${avatarLink}" alt="avatar">
+					<img src="/avatars/${avatarLink}" alt="avatar">
 				</div>
 				<div class="feedback-info">
 					<span class="name i-bold">${name}</span>

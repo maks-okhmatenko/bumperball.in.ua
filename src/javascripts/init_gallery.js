@@ -24,7 +24,8 @@ function loadImages() {
     url: GALLERY_URL,
     success(data) {
       const fileLinks = JSON.parse(data.message);
-      fileLinks.map((it) => {
+
+      fileLinks.forEach((it) => {
         $gallery.append(`
           <div class="slider__el">
             <img class="img" src="${ROOT_URL}/${it}" alt="Slide">

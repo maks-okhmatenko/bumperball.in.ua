@@ -9,13 +9,13 @@ if (!ROOT) {
 
 const config = {
   // Your website's name, used for favicon meta tags
-  site_name: 'bamperball-new',
+  site_name: 'Bumperball Kiev',
 
   // Your website's description, used for favicon meta tags
   site_description: 'Bumperball Kiev',
 
   // Your website's URL, used for sitemap
-  site_url: 'http://bumperball.ua',
+  site_url: 'http://bumperball.in.ua',
 
   // Google Analytics tracking ID (leave blank to disable)
   googleAnalyticsUA: '',

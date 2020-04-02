@@ -1,3 +1,4 @@
+/* global CUSTOM_MESSAGES */
 import $ from 'jquery';
 import 'slick-carousel';
 import 'jquery-mask-plugin';
@@ -13,10 +14,10 @@ import initAboutUs from './init_about_us';
 window.jQuery = $;
 window.$ = $;
 
-
 function initNavEvents() {
   const $hamburgerBtn = $('#hamburger');
   const $desktopNavLink = $('.navigation-link');
+  const $mobileNavLink = $('.mobile-menu__link');
 
   // Hamburger menu
   $hamburgerBtn.on('click', () => {
@@ -25,11 +26,22 @@ function initNavEvents() {
   });
 
   // Scroll to pages
-  $desktopNavLink.on('click', () => {
+  $desktopNavLink.on('click', (event) => {
     const margin = 0;
-    const elementID = $(this).attr('href');
+    const elementID = $(event.target).attr('href');
     const offsetTop = $(elementID).offset().top;
 
+    $('body,html').animate({
+      scrollTop: offsetTop - margin,
+    }, 1000);
+  });
+
+  $mobileNavLink.on('click', (event) => {
+    const margin = 0;
+    const elementID = $(event.target).attr('href');
+    const offsetTop = $(elementID).offset().top;
+
+    $('.mobile-menu').toggleClass('is-open');
     $('body,html').animate({
       scrollTop: offsetTop - margin,
     }, 1000);
@@ -55,7 +67,7 @@ function validateForm() {
     },
     phone: {
       required: true,
-      regex: /((\+38)?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))/i,
+      regex: /((\+38)?\(?\d{3}\)?[\s.-]?(\d{7}|\d{3}[\s.-]\d{2}[\s.-]\d{2}|\d{3}-\d{4}))/i,
     },
     email: {
       required: true,
@@ -69,10 +81,10 @@ function validateForm() {
   return !$inputs.toArray().map((input) => {
     const { name } = input;
     const config = formConfig[name];
-    if (config && (
-      !input.value && config.required
-      || config.regex && !config.regex.test(input.value)
-    )) {
+    const isRequired = (!input.value && config && config.required);
+    const regExNotValid = config && config.regex && !config.regex.test(input.value);
+
+    if (config && (isRequired || regExNotValid)) {
       $(input).addClass('invalid');
       return true;
     }

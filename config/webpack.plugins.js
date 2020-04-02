@@ -133,7 +133,22 @@ const google = new GoogleAnalyticsPlugin({
 });
 
 const copyPlugin = new CopyPlugin([
-  { from: '../src/script.php', to: '../dist/script.php' },
+  {
+    from: path.resolve(__dirname, '../scripts/mailer.php'),
+    to: path.resolve(__dirname, '../dist/scripts/mailer.php'),
+  },
+  {
+    from: path.resolve(__dirname, '../scripts/gallery.php'),
+    to: path.resolve(__dirname, '../dist/scripts/gallery.php'),
+  },
+  {
+    from: path.resolve(__dirname, '../src/images/gallery'),
+    to: path.resolve(__dirname, '../dist/gallery'),
+  },
+  {
+    from: path.resolve(__dirname, '../src/images/avatars'),
+    to: path.resolve(__dirname, '../dist/avatars'),
+  },
 ]);
 
 module.exports = [

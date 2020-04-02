@@ -10,9 +10,9 @@ function json_response($code = 200, $response = null){
         'status' => $code < 300, // success or not?
         'message' => json_encode($response)
     ));
-};
+}
 
-$files = glob("images/gallery/*");
+$files = glob("../gallery/*");
 
 echo json_response(200, $files);
 

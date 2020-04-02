@@ -1,4 +1,5 @@
 /* eslint-disable no-tabs */
+/* global CUSTOM_MESSAGES */
 import $ from 'jquery';
 
 const { ABOUT_US } = CUSTOM_MESSAGES;
@@ -6,9 +7,7 @@ const { ABOUT_US } = CUSTOM_MESSAGES;
 function initAboutUs() {
   const $about = $('.facts-list');
 
-  ABOUT_US.map(({
-    TITLE, DESCRIPTION,
-  }) => {
+  ABOUT_US.forEach(({ TITLE, DESCRIPTION }) => {
     $about.append(`
 		<div class="fact">
 			<span class="fact-value">${TITLE}</span>
