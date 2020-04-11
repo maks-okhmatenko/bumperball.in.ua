@@ -1,11 +1,24 @@
-.intro
-  height: 100vh
-  min-height: 700px
-  position: relative
+#video-container
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+#video
+  height: 100%;
+  width: 100%;
+  object-fit: cover
   background-image: url('../images/intro-bg.jpg')
   background-position: top center
   background-repeat: no-repeat
   background-size: cover
+
+.intro
+  height: 100vh
+  min-height: 700px
+  position: relative
   z-index: 0
   display: flex
   flex-direction: column
@@ -38,7 +51,7 @@
   left: 0
   bottom: 0
   right: 0
-  background-color: rgba(#000000, 80%)
+  background-color: rgba(#000000, 65%)
   z-index: 1
 
 .intro-top

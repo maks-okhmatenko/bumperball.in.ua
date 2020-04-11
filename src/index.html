@@ -13,6 +13,7 @@
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
+<div id="up-button" title="Вверх"></div>
 
 <div class="mobile-menu">
   <ul class="mobile-menu__list">
@@ -68,9 +69,15 @@
 </header>
 
 <div class="screen intro" id="intro">
+  <div id="video-container">
+    <video id="video" loop autoplay="autoplay" preload="metadata">
+      <source src="/video/video.mp4" type="video/mp4">
+      <source src="/video/video.webm" type="video/webm">
+    </video>
+  </div>
   <div class="intro-top container">
     <h1 class="intro-title">Бампербол в киеве</h1>
-    <span class="intro-description">Грай штовхайся посміхайся</span>
+    <span class="intro-description">Грай, штовхайся, посміхайся</span>
   </div>
   <div class="intro-bottom">
     <div class="container">
@@ -241,7 +248,7 @@
             <div class="request-el">
               <label>
                 <span class="request-icon"><i class="icon is-user"></i></span>
-                <input name="name" class="request-input" type="text" placeholder="Введите ваше ФИО">
+                <input name="name" class="request-input" type="text" placeholder="Введите ваше имя">
               </label>
             </div>
 
@@ -317,29 +324,35 @@
   const CUSTOM_MESSAGES = {
     ABOUT_US: [
       {
-        TITLE: "223",
+        ID: 'games',
+        TITLE: "0",
         DESCRIPTION: "Игр проведено на территории Украины"
       },
       {
-        TITLE: ">50",
+        ID: 'parties',
+        TITLE: ">0",
         DESCRIPTION: "Корпоративов проведено"
       },
       {
-        TITLE: "17",
+        ID: 'cities',
+        TITLE: "0",
         DESCRIPTION: "Именно в стольких городах Украины мы провели игры"
       },
       {
-        TITLE: "5",
+        ID: 'years',
+        TITLE: "0",
         DESCRIPTION: "Лет мы дарим эмоции людям"
       },
       {
-        TITLE: "600",
+        ID: 'kids',
+        TITLE: "0",
         DESCRIPTION: "Счастливых детей и их родителей"
       },
     ],
 
     OFFERS: [
       {
+        FORM_TITLE: 'Почасовая аренда',
         TITLE: "BUMPER FOOTBALL",
         DESCRIPTION: "Дни рождения,свадьбы, мальчишники, компанейские игры",
         OFFERS_LIST: [
@@ -353,20 +366,23 @@
         }
       },
       {
+        FORM_TITLE: 'Корпоратив / Выездное мероприятие',
         TITLE: "TEAMBUILDING",
         DESCRIPTION: "Корпоративы, поднятие коллективного настроя и духа",
         OFFERS_LIST: [
-          "до 8 шаров: 1800 грн/1час*",
-          "до 10 шаров: 2000 грн/1час*",
-          "11-18 шаров: 3200 грн /1час*"
+          "до 8 шаров: 2900 грн/1час*",
+          "до 10 шаров: 3200 грн/1час*",
         ],
         SERVICE: {
           TITLE: "Включено:",
           ITEMS: [
-            "- Доставка по Киеву",
+            "- Доставка по г.Киев",
             "- Инструктаж",
             "- Судья на поле",
-            "* аренда поля оплачивается отдельно!"
+            "- 45 минут чистого времени",
+            "- 10-15 инструктаж и подготовка к игре**",
+            "* аренда поля оплачивается отдельно!",
+            "** 1,5-2 часа обсуждается индивидуально",
           ]
         }
       },
@@ -436,15 +452,13 @@
     INFO: {
       PHONES: [
         "+38 (050) 242-02-11",
-        "+38 (093) 825-56-93"
       ],
       EMAILS: [
         "ukrainekava@gmail.com"
       ],
       SOCIAL_MEDIA: [
-          { ICON: 'icon-vk',   HREF: '#' },
-          { ICON: 'icon-fb',   HREF: '#' },
-          { ICON: 'icon-tw',   HREF: '#' },
+          { ICON: 'icon-fb',   HREF: 'https://www.facebook.com/BumperballKiev/' },
+          { ICON: 'icon-tg',   HREF: 'https://t.me/nestoinameste27' },
           { ICON: 'icon-inst', HREF: '#' },
         ],
     },

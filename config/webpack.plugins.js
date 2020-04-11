@@ -149,6 +149,10 @@ const copyPlugin = new CopyPlugin([
     from: path.resolve(__dirname, '../src/images/avatars'),
     to: path.resolve(__dirname, '../dist/avatars'),
   },
+  {
+    from: path.resolve(__dirname, '../src/video'),
+    to: path.resolve(__dirname, '../dist/video'),
+  },
 ]);
 
 module.exports = [

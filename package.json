@@ -82,9 +82,11 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
+    "countup.js": "^2.0.4",
     "enquirer": "^2.3.1",
     "figlet": "^1.2.3",
     "ftp-deploy": "^2.3.3",
+    "is-in-viewport": "^3.0.4",
     "jquery": "^3.4.1",
     "jquery-mask-plugin": "^1.14.16",
     "normalize.css": "^8.0.1",

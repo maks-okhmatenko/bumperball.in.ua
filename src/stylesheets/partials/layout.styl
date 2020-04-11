@@ -1,3 +1,23 @@
+#up-button
+  background-image: url("../images/top.svg")
+  background-repeat: no-repeat
+  background-position: center
+  background-size: 20px
+  width: 30px;
+  height: 30px;
+  border-radius: 100%
+  background-color: #CCCEC8
+  cursor: pointer
+  bottom: 50px
+  right: 50px
+  z-index: 999
+  box-shadow: 1px 1px 6px -3px #000
+  display: none
+
+#up-button.sticky
+  position: fixed
+  display: block
+
 .container
   max-width: 1060px
   margin: 0 auto
@@ -19,6 +39,8 @@
   left: 0
   width: 100%
   z-index: 5
+  will-change background-color
+  transition: background-color 0.2s ease-in-out
   +media-tablet-landscape-up()
     position: fixed
     background-color: #0a0a0a
@@ -83,6 +105,10 @@
   &-center
     +media-tablet-landscape-up()
       display: none
+
+.header.sticky
+  position: fixed
+  background-color: #0a0a0a
 
 .footer
   margin: 50px 0

@@ -2,15 +2,19 @@
 /* global CUSTOM_MESSAGES */
 import $ from 'jquery';
 
-const { GAME_TYPES } = CUSTOM_MESSAGES;
+const { GAME_TYPES, OFFERS } = CUSTOM_MESSAGES;
 
 function initGameTypes() {
   const $offers = $('.types-list');
   const $format = $('.request .request-format');
 
-  GAME_TYPES.map(({
-    TITLE, DESCRIPTION,
-  }) => {
+  OFFERS.forEach(({ FORM_TITLE }) => {
+    $format.append(`
+			<option value="${FORM_TITLE}">${FORM_TITLE}</option>
+		`);
+  });
+
+  GAME_TYPES.forEach(({ TITLE, DESCRIPTION }) => {
     $offers.append(`
 		<div class="type-card">
 			<div class="type">
@@ -21,10 +25,6 @@ function initGameTypes() {
 				</div>
 			</div>
 		</div>
-		`);
-
-    $format.append(`
-			<option value="${TITLE}">${TITLE}</option>
 		`);
   });
 }

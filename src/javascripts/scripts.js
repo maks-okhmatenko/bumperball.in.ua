@@ -2,6 +2,8 @@
 import $ from 'jquery';
 import 'slick-carousel';
 import 'jquery-mask-plugin';
+import 'is-in-viewport';
+import { CountUp } from 'countup.js';
 
 import { FORM_URL } from './environment';
 import initGallery from './init_gallery';
@@ -14,10 +16,27 @@ import initAboutUs from './init_about_us';
 window.jQuery = $;
 window.$ = $;
 
+function toggleSticky(header, upButton) {
+  if (window.pageYOffset > 100) {
+    header.addClass('sticky');
+    upButton.addClass('sticky');
+  } else {
+    header.removeClass('sticky');
+    upButton.removeClass('sticky');
+  }
+}
+
 function initNavEvents() {
   const $hamburgerBtn = $('#hamburger');
   const $desktopNavLink = $('.navigation-link');
   const $mobileNavLink = $('.mobile-menu__link');
+  const $upBtn = $('#up-button');
+
+  $upBtn.on('click', () => {
+    $('body,html').animate({
+      scrollTop: 0,
+    }, 1000);
+  });
 
   // Hamburger menu
   $hamburgerBtn.on('click', () => {
@@ -45,6 +64,12 @@ function initNavEvents() {
     $('body,html').animate({
       scrollTop: offsetTop - margin,
     }, 1000);
+  });
+  const $header = $('.header');
+  const $upButton = $('#up-button');
+
+  $(window).scroll(() => {
+    toggleSticky($header, $upButton);
   });
 }
 
@@ -137,7 +162,32 @@ function initFormEvents() {
   $inputs.on('input', (event) => { $(event.target).removeClass('invalid'); });
 }
 
+function initCounts() {
+  const $facts = $('.facts-list');
+  let started = false;
+
+  $(window).scroll(() => {
+    const isVisible = $facts.isInViewport();
+
+    if (isVisible.length && !started) {
+      started = true;
+      const games = new CountUp('games', 223);
+      const years = new CountUp('years', 5);
+      const cities = new CountUp('cities', 17);
+      const kids = new CountUp('kids', 600);
+      const parties = new CountUp('parties', 50, { prefix: '>' });
+
+      games.start();
+      years.start();
+      cities.start();
+      kids.start();
+      parties.start();
+    }
+  });
+}
+
 $(document).ready(() => {
+  initCounts();
   initNavEvents();
   initFormEvents();
   initAboutUs();
