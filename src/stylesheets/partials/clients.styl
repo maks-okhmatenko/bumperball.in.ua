@@ -1,0 +1,43 @@
+.clients
+  position: relative
+  // min-height: 900px
+  background-image: url('../images/clients-bg.jpg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  z-index: 1
+  min-height: 800px
+
+  +media-tablet-up()
+    min-height: 800px
+
+  +media-phone-up()
+    min-height: 600px
+
+  .heading-title
+    text-transform: uppercase
+    font-size: 45px
+    color: #FFFFFF
+
+.clients::before
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  display: block
+  content: ''
+  background-color: rgba(#000, 80%)
+  z-index: -1
+
+.icon-set
+  margin-bottom: 50px
+  padding: 30px
+  display: flex
+  flex-direction: row
+  background-color: white
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-evenly
+  img
+    margin: 10px

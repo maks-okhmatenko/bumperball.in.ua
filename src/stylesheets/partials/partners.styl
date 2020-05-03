@@ -1,0 +1,64 @@
+.partners
+  position: relative
+  min-height: 800px
+  background-color: #ffffff
+
+  .heading-title
+    color: #000000
+
+  &-list
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    overflow-x: auto
+    min-width: 100%
+    -ms-overflow-x-style: none;
+    &::-webkit-scrollbar
+      display: none
+
+
+  &-item
+    width: 300px
+    min-width: 300px
+    margin: 0 20px
+    display inline-block
+    
+    +media-desktop-up()
+      width: 28%
+    
+    +media-tablet-up()
+      width: 49%
+      margin-bottom: 20px
+
+    +media-phone-up()
+      width: 100%
+
+  &-image
+    width: 100%
+    margin-bottom: 40px
+
+  &-info
+
+    .name
+      display: block
+      margin-bottom: 10px
+      font-size: 22px
+    
+    .city
+      font-size: 20px
+      color: #858585
+
+  &-text
+    display: inline-block
+    margin: 10px 0
+    font-size: 16px
+
+.icon-set
+  margin-bottom: 50px
+  padding: 30px
+  display: flex
+  flex-direction: row
+  background-color: white
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-evenly
